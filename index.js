@@ -8,7 +8,16 @@
  */
 function trimProperties(obj) {
   // ✨ implement
-}
+return Object.keys(obj).reduce((acc, curr) => {
+  acc[curr] = obj[curr].trim()
+  return acc
+}, {})
+  }
+
+
+// let trimmedObj = trimProperties({name: '  sean', age: 'three  '})
+
+// console.log('tO: ', trimmedObj);
 
 /**
  * [Exercise 2] trimPropertiesMutation trims in place the properties of an object
@@ -19,8 +28,25 @@ function trimProperties(obj) {
  * trimPropertiesMutation({ name: '  jane  ' }) // returns the object mutated in place { name: 'jane' }
  */
 function trimPropertiesMutation(obj) {
-  // ✨ implement
+  let newObj = Object.keys(obj).reduce((acc, curr) => {
+    acc[curr] = obj[curr].trim()
+    return acc
+  }, {})
+
+ Object.assign(obj, newObj)
+ return obj
 }
+
+// const person = {name: '  sean', age: 'three  '}
+// console.log('person: ', person);
+
+// let newPerson = trimProperties(person)
+
+// console.log('tO: ', newPerson);
+// console.log('after person: ', person);
+
+// Object.assign(person, newPerson)
+// console.log('assigned person: ', person);
 
 /**
  * [Exercise 3] findLargestInteger finds the largest integer in an array of integers
@@ -31,8 +57,16 @@ function trimPropertiesMutation(obj) {
  * findLargestInteger([2, 1, 7, 3, 14, 7]) // returns 14
  */
 function findLargestInteger(integers) {
-  // ✨ implement
+  return integers.reduce((max, num) => {
+if (num > max) {
+  return num
+} return max
+  })
 }
+
+const numArr = [2, 1, 7, 3, 14, 7]
+const result = findLargestInteger(numArr)
+console.log('largest: ', result);
 
 class Counter {
   /**
